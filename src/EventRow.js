@@ -9,7 +9,6 @@ class EventRow extends React.Component {
       segments,
       slotMetrics: { slots },
       className,
-      isBooking,
     } = this.props
 
     let lastEnd = 1
@@ -20,39 +19,11 @@ class EventRow extends React.Component {
           let key = '_lvl_' + li
           let gap = left - lastEnd
 
-          // console.log('gap', gap)
-          // console.log('event', event)
-          // console.log('left', left)
-          // console.log('right', right)
-          // console.log('span', span)
-          // console.log('li', li)
-          // console.log('isBooking', isBooking)
-
           let content = EventRowMixin.renderEvent(this.props, event)
 
-          if (gap)
-            row.push(
-              EventRowMixin.renderSpan(
-                isBooking,
-                slots,
-                gap,
-                left,
-                right,
-                `${key}_gap`
-              )
-            )
+          if (gap) row.push(EventRowMixin.renderSpan(slots, gap, `${key}_gap`))
 
-          row.push(
-            EventRowMixin.renderSpan(
-              isBooking,
-              slots,
-              span,
-              left,
-              right,
-              key,
-              content
-            )
-          )
+          row.push(EventRowMixin.renderSpan(slots, span, key, content))
 
           lastEnd = right + 1
 

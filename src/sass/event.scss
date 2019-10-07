@@ -55,6 +55,8 @@
 }
 
 .rbc-event-booking {
+  display: flex;
+  align-items: center;
   transform: translateX(50px);
 
   &.rbc-event-continues-prior {
@@ -62,5 +64,24 @@
     &.rbc-event-continues-after {
       transform: none;
     }
+  }
+
+  .question-mark {
+    font-size: 12px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    position: relative;
+    margin-left: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid #fff;
+    box-sizing: initial;
+    background: none;
+    flex: 0 0 14px;
+    width: 14px;
+    height: 14px;
+    line-height: 15px;
   }
 }
