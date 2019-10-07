@@ -62,8 +62,28 @@ export default {
     )
   },
 
-  renderSpan(slots, len, key, content = ' ') {
-    let per = (Math.abs(len) / slots) * 100 + '%'
+  renderSpan(isBooking, slots, len, left, right, key, content = ' ') {
+    let per,
+      mar = 0
+    if (isBooking) {
+      // if (content !== ' ') {
+      //   if (right == 7) {
+      //     per = (Math.abs(len) / slots) * 100 - 7 + '%'
+      //   } else if (left == 1) {
+      //     mar = 30
+      //   } else if (len == 1) {
+      //     per = (Math.abs(len) / slots) * 100 + '%'
+      //   } else {
+      //     per = (Math.abs(len) / slots) * 100 + 3 + '%'
+      //   }
+      // } else {
+      //   console.log('no-content', len)
+      //   per = (Math.abs(len) / slots) * 100 + 10 + '%'
+      // }
+      per = (Math.abs(len) / slots) * 100 + '%'
+    } else {
+      per = (Math.abs(len) / slots) * 100 + '%'
+    }
 
     return (
       <div
@@ -74,7 +94,7 @@ export default {
           WebkitFlexBasis: per,
           flexBasis: per,
           maxWidth: per,
-          // marginLeft: mar,
+          marginLeft: mar,
         }}
       >
         {content}

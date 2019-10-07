@@ -8222,12 +8222,42 @@
         selected: isSelected(event, selected),
       })
     },
-    renderSpan: function renderSpan(slots, len, key, content) {
+    renderSpan: function renderSpan(
+      isBooking,
+      slots,
+      len,
+      left,
+      right,
+      key,
+      content
+    ) {
       if (content === void 0) {
         content = ' '
       }
 
-      var per = (Math.abs(len) / slots) * 100 + '%'
+      var per,
+        mar = 0
+
+      if (isBooking) {
+        // if (content !== ' ') {
+        //   if (right == 7) {
+        //     per = (Math.abs(len) / slots) * 100 - 7 + '%'
+        //   } else if (left == 1) {
+        //     mar = 30
+        //   } else if (len == 1) {
+        //     per = (Math.abs(len) / slots) * 100 + '%'
+        //   } else {
+        //     per = (Math.abs(len) / slots) * 100 + 3 + '%'
+        //   }
+        // } else {
+        //   console.log('no-content', len)
+        //   per = (Math.abs(len) / slots) * 100 + 10 + '%'
+        // }
+        per = (Math.abs(len) / slots) * 100 + '%'
+      } else {
+        per = (Math.abs(len) / slots) * 100 + '%'
+      }
+
       return React__default.createElement(
         'div',
         {
@@ -8236,7 +8266,8 @@
           style: {
             WebkitFlexBasis: per,
             flexBasis: per,
-            maxWidth: per, // marginLeft: mar,
+            maxWidth: per,
+            marginLeft: mar,
           },
         },
         content
@@ -8261,7 +8292,8 @@
         var _this$props = this.props,
           segments = _this$props.segments,
           slots = _this$props.slotMetrics.slots,
-          className = _this$props.className
+          className = _this$props.className,
+          isBooking = _this$props.isBooking
         var lastEnd = 1
         return React__default.createElement(
           'div',
@@ -8274,11 +8306,37 @@
               right = _ref.right,
               span = _ref.span
             var key = '_lvl_' + li
-            var gap = left - lastEnd
+            var gap = left - lastEnd // console.log('gap', gap)
+            // console.log('event', event)
+            // console.log('left', left)
+            // console.log('right', right)
+            // console.log('span', span)
+            // console.log('li', li)
+            // console.log('isBooking', isBooking)
+
             var content = EventRowMixin.renderEvent(_this.props, event)
             if (gap)
-              row.push(EventRowMixin.renderSpan(slots, gap, key + '_gap'))
-            row.push(EventRowMixin.renderSpan(slots, span, key, content))
+              row.push(
+                EventRowMixin.renderSpan(
+                  isBooking,
+                  slots,
+                  gap,
+                  left,
+                  right,
+                  key + '_gap'
+                )
+              )
+            row.push(
+              EventRowMixin.renderSpan(
+                isBooking,
+                slots,
+                span,
+                left,
+                right,
+                key,
+                content
+              )
+            )
             lastEnd = right + 1
             return row
           }, [])
