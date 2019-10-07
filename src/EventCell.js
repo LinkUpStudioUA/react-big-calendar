@@ -51,10 +51,7 @@ class EventCell extends React.Component {
             slotEnd={slotEnd}
           />
         ) : (
-          <>
-            {title}
-            {isBooking && <span className="question-mark">?</span>}
-          </>
+          title
         )}
       </div>
     )
@@ -76,6 +73,7 @@ class EventCell extends React.Component {
           onDoubleClick={e => onDoubleClick && onDoubleClick(event, e)}
         >
           {typeof children === 'function' ? children(content) : content}
+          {isBooking && <span className="question-mark">?</span>}
         </div>
       </EventWrapper>
     )
