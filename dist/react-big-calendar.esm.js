@@ -361,7 +361,19 @@ var EventCell =
               slotStart: slotStart,
               slotEnd: slotEnd,
             })
-          : title
+          : React.createElement(
+              React.Fragment,
+              null,
+              title,
+              isBooking &&
+                React.createElement(
+                  'span',
+                  {
+                    className: 'question-mark',
+                  },
+                  '?'
+                )
+            )
       )
       return React.createElement(
         EventWrapper,
@@ -387,15 +399,7 @@ var EventCell =
               return _onDoubleClick && _onDoubleClick(event, e)
             },
           }),
-          typeof children === 'function' ? children(content) : content,
-          isBooking &&
-            React.createElement(
-              'span',
-              {
-                className: 'question-mark',
-              },
-              '?'
-            )
+          typeof children === 'function' ? children(content) : content
         )
       )
     }

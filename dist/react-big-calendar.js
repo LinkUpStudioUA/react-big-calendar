@@ -3386,7 +3386,19 @@
                 slotStart: slotStart,
                 slotEnd: slotEnd,
               })
-            : title
+            : React__default.createElement(
+                React__default.Fragment,
+                null,
+                title,
+                isBooking &&
+                  React__default.createElement(
+                    'span',
+                    {
+                      className: 'question-mark',
+                    },
+                    '?'
+                  )
+              )
         )
         return React__default.createElement(
           EventWrapper,
@@ -3412,15 +3424,7 @@
                 return _onDoubleClick && _onDoubleClick(event, e)
               },
             }),
-            typeof children === 'function' ? children(content) : content,
-            isBooking &&
-              React__default.createElement(
-                'span',
-                {
-                  className: 'question-mark',
-                },
-                '?'
-              )
+            typeof children === 'function' ? children(content) : content
           )
         )
       }
