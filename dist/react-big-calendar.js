@@ -8222,15 +8222,7 @@
         selected: isSelected(event, selected),
       })
     },
-    renderSpan: function renderSpan(
-      isBooking,
-      slots,
-      len,
-      left,
-      right,
-      key,
-      content
-    ) {
+    renderSpan: function renderSpan(slots, len, left, right, key, content) {
       if (content === void 0) {
         content = ' '
       }
@@ -8269,8 +8261,7 @@
         var _this$props = this.props,
           segments = _this$props.segments,
           slots = _this$props.slotMetrics.slots,
-          className = _this$props.className,
-          isBooking = _this$props.isBooking
+          className = _this$props.className
         var lastEnd = 1
         return React__default.createElement(
           'div',
@@ -8294,25 +8285,10 @@
             var content = EventRowMixin.renderEvent(_this.props, event)
             if (gap)
               row.push(
-                EventRowMixin.renderSpan(
-                  isBooking,
-                  slots,
-                  gap,
-                  left,
-                  right,
-                  key + '_gap'
-                )
+                EventRowMixin.renderSpan(slots, gap, left, right, key + '_gap')
               )
             row.push(
-              EventRowMixin.renderSpan(
-                isBooking,
-                slots,
-                span,
-                left,
-                right,
-                key,
-                content
-              )
+              EventRowMixin.renderSpan(slots, span, left, right, key, content)
             )
             lastEnd = right + 1
             return row

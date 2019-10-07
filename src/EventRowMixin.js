@@ -62,7 +62,7 @@ export default {
     )
   },
 
-  renderSpan(isBooking, slots, len, left, right, key, content = ' ') {
+  renderSpan(slots, len, left, right, key, content = ' ') {
     let per = (Math.abs(len) / slots) * 100 + '%'
 
     return (
