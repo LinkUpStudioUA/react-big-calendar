@@ -8235,29 +8235,7 @@
         content = ' '
       }
 
-      var per,
-        mar = 0
-
-      if (isBooking) {
-        // if (content !== ' ') {
-        //   if (right == 7) {
-        //     per = (Math.abs(len) / slots) * 100 - 7 + '%'
-        //   } else if (left == 1) {
-        //     mar = 30
-        //   } else if (len == 1) {
-        //     per = (Math.abs(len) / slots) * 100 + '%'
-        //   } else {
-        //     per = (Math.abs(len) / slots) * 100 + 3 + '%'
-        //   }
-        // } else {
-        //   console.log('no-content', len)
-        //   per = (Math.abs(len) / slots) * 100 + 10 + '%'
-        // }
-        per = (Math.abs(len) / slots) * 100 + '%'
-      } else {
-        per = (Math.abs(len) / slots) * 100 + '%'
-      }
-
+      var per = (Math.abs(len) / slots) * 100 + '%'
       return React__default.createElement(
         'div',
         {
@@ -8267,7 +8245,6 @@
             WebkitFlexBasis: per,
             flexBasis: per,
             maxWidth: per,
-            marginLeft: mar,
           },
         },
         content
